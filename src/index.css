@@ -1,0 +1,322 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
+:root {
+  --color-primary: #0f0f0f;
+  --color-accent: #c5a880;
+  --color-accent-hover: #b0936b;
+  --color-bg-light: #f7f7f7;
+  --color-bg-pure: #ffffff;
+  --color-text: #1c1c1c;
+  --color-text-muted: #6c757d;
+  --color-border: #e2e8f0;
+  --color-success: #2e7d32;
+  
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --transition-smooth: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-sans);
+  color: var(--color-text);
+  background-color: var(--color-bg-pure);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  color: var(--color-primary);
+  line-height: 1.25;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: var(--transition-smooth);
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInLeft {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+@keyframes scaleUp {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+/* Scrollbar Style */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-bg-light);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-accent);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent-hover);
+}
+
+/* Layout Utilities */
+.container {
+  width: 100%;
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1.25rem;
+  }
+}
+
+.section-padding {
+  padding: 6rem 0;
+}
+
+@media (max-width: 768px) {
+  .section-padding {
+    padding: 4rem 0;
+  }
+}
+
+/* Typography styles */
+.text-serif {
+  font-family: var(--font-serif);
+}
+
+.text-gold {
+  color: var(--color-accent);
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.section-title h2 {
+  font-size: 2.5rem;
+  margin-bottom: 0.75rem;
+  position: relative;
+  display: inline-block;
+}
+
+.section-title h2::after {
+  content: '';
+  position: absolute;
+  bottom: -0.75rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 45px;
+  height: 2px;
+  background-color: var(--color-accent);
+}
+
+.section-title p {
+  font-size: 1rem;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 500;
+  margin-top: 1rem;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.9rem 2.2rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-bg-pure);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-accent);
+  color: var(--color-primary);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-primary);
+  color: var(--color-bg-pure);
+}
+
+.btn-gold {
+  background-color: var(--color-accent);
+  color: var(--color-primary);
+}
+
+.btn-gold:hover {
+  background-color: var(--color-primary);
+  color: var(--color-bg-pure);
+}
+
+.btn-outline-gold {
+  background-color: transparent;
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.btn-outline-gold:hover {
+  background-color: var(--color-accent);
+  color: var(--color-primary);
+}
+
+/* Badges */
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background-color: var(--color-accent);
+  color: var(--color-primary);
+  border-radius: 2px;
+}
+
+.badge-dark {
+  background-color: var(--color-primary);
+  color: var(--color-bg-pure);
+}
+
+/* Forms */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.5rem;
+  color: var(--color-primary);
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--color-border);
+  font-size: 0.9rem;
+  background-color: var(--color-bg-pure);
+  transition: var(--transition-smooth);
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+
+/* Global Layout App Wrapping */
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex-grow: 1;
+}
+
+/* Helper Utilities */
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.grid-cols-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.grid-cols-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.grid-cols-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+}
+
+@media (max-width: 992px) {
+  .grid-cols-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .grid-cols-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .grid-cols-4, .grid-cols-3, .grid-cols-2 {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
